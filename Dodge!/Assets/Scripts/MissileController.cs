@@ -47,7 +47,7 @@ public class MissileController : MonoBehaviour {
         GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
         Destroy(explosion, explosion.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
 
-        CameraController.missileDestroyed = true;
+        CameraController.needUpdate = true;
 
         Transform particle = transform.GetChild(0);
 

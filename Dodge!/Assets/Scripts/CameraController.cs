@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour {
     private Vector3 velocity;
     private Camera cam;
 
-    public static bool missileDestroyed;
+    public static bool needUpdate;
 
     private void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -26,7 +26,7 @@ public class CameraController : MonoBehaviour {
     }
 
     private void Update() {
-        if (missileDestroyed) {
+        if (needUpdate) {
             targets = GameObject.FindGameObjectsWithTag("Missile");
         }
     }
