@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MissileSpawner : MonoBehaviour {
+public class SpawnMissile : MonoBehaviour {
 
     [Range(0f, 1f)] public float spawnRate;
     [Range(0f, 10f)] public float spawnRadius;

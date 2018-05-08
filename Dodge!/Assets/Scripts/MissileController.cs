@@ -10,6 +10,8 @@ public class MissileController : MonoBehaviour {
     [Range(0f, 10f)] public float speed = 1f;
     [Range(0f, 1000f)] public float angularSpeed = 1f;
 
+    [Range(0f, 1000f)] public float bonusScore = 10f;
+
     private Transform target;
     private Rigidbody2D rb;
     private AudioController audioController;
@@ -43,6 +45,15 @@ public class MissileController : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision) {
         //Debug.Log("Hit!");
+
+        if (collision.gameObject.tag == "Player") {
+            collision.gameObject.GetComponent<Animator>().Play("TakeDamage");
+        }
+
+        if (collision.gameObject.tag == "Missile") {
+            GameController gameController = FindObjectOfType<GameController>();
+            gameController.ChangeScore(bonusScore);
+        }
 
         GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
         Destroy(explosion, explosion.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);

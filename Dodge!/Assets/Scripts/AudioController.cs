@@ -6,6 +6,7 @@ using UnityEngine.Audio;
 
 public class AudioController : MonoBehaviour {
 
+    #region Sound Class
     [System.Serializable]
     public class Sound {
         public string name;
@@ -24,6 +25,7 @@ public class AudioController : MonoBehaviour {
 
         public bool loop;
     }
+    #endregion
 
     public Sound[] sounds;
 
@@ -48,8 +50,12 @@ public class AudioController : MonoBehaviour {
             sound.source.loop = sound.loop;
         }
 	}
-	
-	public void Play (string name) {
+
+    private void Start() {
+        Play("Background");
+    }
+
+    public void Play (string name) {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null) {
             Debug.LogWarning("Sound " + name + " does not exist.");
