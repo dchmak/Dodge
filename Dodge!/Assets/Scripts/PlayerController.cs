@@ -11,7 +11,10 @@ public class PlayerController : MonoBehaviour {
 
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
-	}
+
+        AudioController audioCtrl = FindObjectOfType<AudioController>();
+        audioCtrl.Play("Background");
+    }
 	
 	void FixedUpdate () {
         float xMovement = Input.GetAxis("Horizontal");

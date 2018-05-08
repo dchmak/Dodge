@@ -12,6 +12,7 @@ public class MissileController : MonoBehaviour {
 
     private Transform target;
     private Rigidbody2D rb;
+    private AudioController audioController;
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -20,9 +21,15 @@ public class MissileController : MonoBehaviour {
         if (players.Length != 0) {
             target = GetClosestObject(players);
         }
+
+        audioController = FindObjectOfType<AudioController>();
     }
-	
-	void FixedUpdate () {
+
+    private void Update() {
+        //audioController.Play("Engine");
+    }
+
+    void FixedUpdate () {
         if (target != null) {
             Vector2 dir = ((Vector2)target.position - rb.position).normalized;
 
@@ -35,14 +42,23 @@ public class MissileController : MonoBehaviour {
 	}
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        Debug.Log("Hit!");
+        //Debug.Log("Hit!");
 
         GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
         Destroy(explosion, explosion.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
 
         CameraController.missileDestroyed = true;
 
+        Transform particle = transform.GetChild(0);
+
+        particle.parent = null;
+        ParticleSystem particleSystem = particle.GetComponent<ParticleSystem>();
+        particleSystem.Stop();
+        
+        audioController.Play("Explosion");
+
         Destroy(gameObject);
+        Destroy(particle.gameObject, particleSystem.main.duration);
     }
 
     Transform GetClosestObject(GameObject[] obj) {
