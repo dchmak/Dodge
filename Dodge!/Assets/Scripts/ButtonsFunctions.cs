@@ -17,14 +17,6 @@ public class ButtonsFunctions : MonoBehaviour {
         Application.Quit();
     }
 
-    public void SetScore() {
-        float score = FindObjectOfType<GameController>().getScore();
-
-        if (PlayerPrefs.GetFloat("Highscore", 0) < score) {
-            PlayerPrefs.SetFloat("Highscore", score);
-        }
-    }
-
     public void ResetAll() {
         PlayerPrefs.DeleteAll();
     }

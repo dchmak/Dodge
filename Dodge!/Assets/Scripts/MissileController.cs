@@ -46,12 +46,15 @@ public class MissileController : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision) {
         //Debug.Log("Hit!");
 
+        GameController gameController = FindObjectOfType<GameController>();
+
         if (collision.gameObject.tag == "Player") {
             collision.gameObject.GetComponent<Animator>().Play("TakeDamage");
+
+            gameController.TakeDamage();
         }
 
         if (collision.gameObject.tag == "Missile") {
-            GameController gameController = FindObjectOfType<GameController>();
             gameController.ChangeScore(bonusScore);
         }
 
