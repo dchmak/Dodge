@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 50148206835720920}
   - component: {fileID: 114833069283921182}
   - component: {fileID: 114506569977189590}
+  - component: {fileID: 58728751634037184}
+  - component: {fileID: 95793201212160382}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -64,6 +66,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &58728751634037184
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1156052716553042}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!60 &60947756369809058
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -102,6 +119,24 @@ PolygonCollider2D:
       - {x: 0.12995933, y: 0.000172331}
       - {x: 0.10020049, y: 0.009730708}
       - {x: 0.044382177, y: 0.110114664}
+--- !u!95 &95793201212160382
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1156052716553042}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 505f9fed67fcd9447a2f0c3b09a30fba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114506569977189590
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -114,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRate: 1
-  spawnRadius: 1
+  spawnRadius: 5
   spawnerPrefab: {fileID: 1463467581479896, guid: ddccf4fa84605f5498641773b51d9ac5,
     type: 2}
 --- !u!114 &114833069283921182
@@ -129,6 +164,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  emergencySpeed: 3
+  cautionRange: 0.5
+  slowTime: 0.5
 --- !u!212 &212069899252508728
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -246,6 +246,10 @@ MonoBehaviour:
   explosionPrefab: {fileID: 120280, guid: b185c1a9cf067374586d095111b15bd1, type: 2}
   speed: 1
   angularSpeed: 100
+  bonusScore: 10
+  scoreToProgress: 200
+  speedDifficultyScale: 0.5
+  angularSpeedDifficultyScale: 20
 --- !u!198 &198343730485412372
 ParticleSystem:
   m_ObjectHideFlags: 1

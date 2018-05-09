@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour {
     [Range(0f, 1f)] public float shakeDuration;
     [Range(0f, 1f)] public float shakeMagnitude;
 
+    public static int lives;
     public static float score;
         
     private bool isPaused = false;
@@ -30,6 +31,7 @@ public class GameController : MonoBehaviour {
     private void Start() {
         healthBar.maxValue = maxLives;
         healthBar.value = maxLives;
+        lives = maxLives;
 
         score = 0f;
     }
@@ -75,6 +77,7 @@ public class GameController : MonoBehaviour {
 
     public void TakeDamage() {
         healthBar.value--;
+        lives--;
     }
 
     public IEnumerator CameraShake() {

@@ -7,10 +7,15 @@ public class MissileController : MonoBehaviour {
 
     public GameObject explosionPrefab;
 
+    [Header("Initial Statistics")]
     [Range(0f, 10f)] public float speed = 1f;
-    [Range(0f, 1000f)] public float angularSpeed = 1f;
-
+    [Range(0f, 1000f)] public float angularSpeed = 100f;
     [Range(0f, 1000f)] public float bonusScore = 10f;
+
+    [Header("Difficulty")]
+    [Range(0, 1000)] public int scoreToProgress = 200;
+    [Range(0f, 10f)] public float speedDifficultyScale = 1f;
+    [Range(0f, 1000f)] public float angularSpeedDifficultyScale = 100f;
 
     private Transform target;
     private Rigidbody2D rb;
@@ -36,10 +41,10 @@ public class MissileController : MonoBehaviour {
             Vector2 dir = ((Vector2)target.position - rb.position).normalized;
 
             float rotateAmount = Vector3.Cross(transform.right, dir).z;
+            
+            rb.angularVelocity = rotateAmount * (angularSpeed +( (int)GameController.score / scoreToProgress) * angularSpeedDifficultyScale);
 
-            rb.angularVelocity = rotateAmount * angularSpeed;
-
-            rb.velocity = transform.right * speed;
+            rb.velocity = transform.right * (speed + ( (int)GameController.score / scoreToProgress) * speedDifficultyScale);
         }
 	}
 
