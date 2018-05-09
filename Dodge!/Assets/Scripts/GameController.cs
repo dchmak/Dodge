@@ -7,16 +7,24 @@ using TMPro;
 
 public class GameController : MonoBehaviour {
 
+    [Header("Score Display")]
     public TextMeshProUGUI scoreText;
     [Range(0f,100f)] public float timeToScore;
 
+    [Header("Pause")]
     public GameObject pauseScreen;
 
+    [Header("Health")]
     public Slider healthBar;
     [Range(1, 5)] public int maxLives;
-    
-    public static float score;
 
+    [Header("Camera Shake")]
+    public Camera cam;
+    [Range(0f, 1f)] public float shakeDuration;
+    [Range(0f, 1f)] public float shakeMagnitude;
+
+    public static float score;
+        
     private bool isPaused = false;
 
     private void Start() {
@@ -67,7 +75,25 @@ public class GameController : MonoBehaviour {
 
     public void TakeDamage() {
         healthBar.value--;
+    }
 
-        //Debug.Log(lives);
+    public IEnumerator CameraShake() {
+        Vector3 originalPos = cam.transform.localPosition;
+
+        float elapsed = 0f;
+
+        while (elapsed < shakeDuration) {
+            float x = Random.Range(-shakeMagnitude, shakeMagnitude);
+            float y = Random.Range(-shakeMagnitude, shakeMagnitude);
+            float z = Random.Range(-shakeMagnitude, shakeMagnitude);
+
+            cam.transform.localPosition += new Vector3(x, y, z);
+
+            elapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+        cam.transform.localPosition = originalPos;
     }
 }

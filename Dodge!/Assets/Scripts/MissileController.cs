@@ -52,6 +52,7 @@ public class MissileController : MonoBehaviour {
             collision.gameObject.GetComponent<Animator>().Play("TakeDamage");
 
             gameController.TakeDamage();
+            StartCoroutine(gameController.CameraShake());
         }
 
         if (collision.gameObject.tag == "Missile") {
