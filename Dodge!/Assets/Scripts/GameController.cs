@@ -49,7 +49,9 @@ public class GameController : MonoBehaviour {
         scoreText.text = "Score: " + score.ToString("F0");
 
         if (healthBar.value == 0) {
-            PlayerPrefs.SetFloat("Highscore", score);
+            if (PlayerPrefs.GetFloat("Highscore", 0) < score) {
+                PlayerPrefs.SetFloat("Highscore", score);
+            }
 
             SceneManager.LoadScene("Gameover");
         }

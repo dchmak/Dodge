@@ -79,6 +79,8 @@ public class MissileController : MonoBehaviour {
 
         Destroy(gameObject);
         Destroy(particle.gameObject, particleSystem.main.duration);
+
+        PlayerController.isSlowed = false;
     }
 
     Transform GetClosestObject(GameObject[] obj) {

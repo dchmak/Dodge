@@ -11,9 +11,10 @@ public class PlayerController : MonoBehaviour {
     [Range(0f, 1f)] public float cautionRange = 0.5f;
     [Range(0f, 1f)] public float slowTime;
 
+    public static bool isSlowed;
+
     private Rigidbody2D rb;
     private CircleCollider2D cir;
-    private bool isSlowed;
 
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
