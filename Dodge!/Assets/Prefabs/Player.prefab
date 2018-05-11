@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRate: 1
-  spawnRadius: 5
+  spawnRadius: 2
   spawnerPrefab: {fileID: 1463467581479896, guid: ddccf4fa84605f5498641773b51d9ac5,
     type: 2}
 --- !u!114 &114833069283921182

@@ -731,7 +731,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: -5}
   minZoom: 100
   maxZoom: 10
-  zoomLimit: 5
+  zoomLimit: 7
   smoothTime: 0.01
 --- !u!20 &519420031
 Camera:
